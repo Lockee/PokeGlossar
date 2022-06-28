@@ -14,25 +14,27 @@ export const Overview: React.FC<{}> = () => {
     setPokeId2(getRandomPokemonId());
   };
 
-  if (pokemon.isLoading) return <div>Loading...</div>;
-
   return (
     <div className={styles.container}>
       <div className={styles.box}>
-        <div className={styles.imageContainer}>
-          <span>{pokemon.data?.name}</span>
-          <img
-            className={styles.sprite}
-            src={pokemon.data?.sprites.front_default!}
-          />
-        </div>
-        <div className={styles.imageContainer}>
-          <span>{pokemon2.data?.name}</span>
-          <img
-            className={styles.sprite}
-            src={pokemon2.data?.sprites.front_default!}
-          />
-        </div>
+        {!pokemon.isLoading && !pokemon2.isLoading && (
+          <>
+            <div className={styles.imageContainer}>
+              <span>{pokemon.data?.name}</span>
+              <img
+                className={styles.sprite}
+                src={pokemon.data?.sprites.front_default!}
+              />
+            </div>
+            <div className={styles.imageContainer}>
+              <span>{pokemon2.data?.name}</span>
+              <img
+                className={styles.sprite}
+                src={pokemon2.data?.sprites.front_default!}
+              />
+            </div>
+          </>
+        )}
       </div>
       <div className={styles.spacer} />
       <button
